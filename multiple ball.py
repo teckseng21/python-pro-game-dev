@@ -19,9 +19,50 @@ class Ball:
         screen.draw.filled_circle(pos,self.radius,"blue")
 
 ball=Ball(50,100)
+ball1=Ball(60,100)
 
 def draw():
     screen.clear()
     ball.draw()
+    ball1.draw()
+
+def update(dt):
+    uy=ball.vy
+    ball.vy+=gravity*dt
+    ball.y+=(uy+ball.vy)*0.5*dt
+    if ball.y>HEIGHT-ball.radius:
+        ball.y=HEIGHT-ball.radius
+        ball.vy=-ball.vy*0.9
+    ball.x+=ball.vx*dt
+    if ball.x>WIDTH+ball.radius:
+        ball.vx=-ball.vx
+    if ball.x<ball.radius:
+        ball.vx=ball.vx*dt
+
+    uy1=ball1.vy
+    ball1.vy+=gravity*dt
+    ball1.y+=(uy1+ball1.vy)*0.5*dt
+    if ball1.y>HEIGHT-ball1.radius:
+        ball1.y=HEIGHT-ball1.radius
+        ball1.vy=-ball1.vy*0.9
+    ball1.x+=ball1.vx*dt
+    if ball1.x>WIDTH+ball1.radius:
+        ball1.vx=-ball1.vx
+    if ball1.x<ball1.radius:
+        ball1.vx=ball1.vx*dt
+
+def on_key_down(key):
+    if key==keys.SPACE:
+        ball.vy=-500
+    if key==keys.RIGHT:
+        ball.vx=500
+    if key==keys.LEFT:
+        ball.vx=-500
+    if key==keys.SPACE:
+        ball1.vy=-500
+    if key==keys.A:
+        ball1.vx=-500
+    if key==keys.D:
+        ball1.vx=500
 
 pgzrun.go()
