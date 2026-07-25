@@ -31,8 +31,13 @@ while True:
             green_circle.draw()
             blue_circle.draw()
             pygame.display.update()
-        if (event.type==pygame.MOUSEBUTTONUP):
+        elif (event.type==pygame.MOUSEBUTTONUP):
             red_circle.grow(10)
             green_circle.grow(10)
             blue_circle.grow(10)
+            pygame.display.update() 
+        elif (event.type==pygame.MOUSEMOTION):
+            pos=pygame.mouse.get_pos()
+            black_circle=circle((0,0,0), 5, pos)
+            black_circle.draw()
             pygame.display.update()
