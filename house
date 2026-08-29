@@ -1,0 +1,58 @@
+import pygame
+pygame.init()
+screen=pygame.display.set_mode((500,500))
+screen.fill((255,255,255))
+
+class rectangle:
+    def __init__(self, colour, x, y, width, height):
+        self.colour=colour
+        self.x=x
+        self.y=y
+        self.width=width
+        self.height=height
+
+    def draw(self):
+        pygame.draw.rect(screen, self.colour, (self.x, self.y, self.width, self.height))
+
+class rectangle1:
+    def __init__(self, colour, x, y, width, height):
+        self.colour=colour
+        self.x=x
+        self.y=y
+        self.width=width
+        self.height=height
+
+    def draw(self):
+        pygame.draw.rect(screen, self.colour, (self.x, self.y, self.width, self.height))
+
+class line:
+    def __init__(self,colour, start_pos, end_pos, width=1):
+        self.colour=colour
+        self.start_pos=start_pos
+        self.end_pos=end_pos
+        self.width=width
+
+    def draw(self):
+        pygame.draw.line(screen, self.colour, self.start_pos, self.end_pos, self.width)
+
+
+rect=rectangle((0,255,0), 150,250, 200, 100)
+rect1=rectangle1((0,0,255), 200,290, 50, 60)
+lin=line((255,165,0), (400,250), (210,270), 2)
+
+while True:
+    for event in pygame.event.get():
+        if event.type==pygame.QUIT:
+            pygame.quit()
+        if (event.type==pygame.KEYDOWN):
+            if event.key==pygame.K_r:
+                rect.draw()
+                pygame.display.update()
+        if (event.type==pygame.KEYDOWN):
+            if event.key==pygame.K_d:
+                rect1.draw()
+                pygame.display.update()
+        if (event.type==pygame.KEYDOWN):
+            if event.key==pygame.K_l:
+                lin.draw()
+                pygame.display.update()
