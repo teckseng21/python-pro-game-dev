@@ -32,13 +32,12 @@ class line:
         self.end_pos=end_pos
         self.width=width
 
-    def draw(self):
-        pygame.draw.line(screen, self.colour, self.start_pos, self.end_pos, self.width)
 
 
 rect=rectangle((0,255,0), 150,250, 200, 100)
 rect1=rectangle1((0,0,255), 200,290, 50, 60)
-lin=line((255,165,0), (400,250), (210,270), 2)
+pygame.draw.polygon( screen, "red", [(300, 100), (200, 300), (400, 300)] )
+
 
 while True:
     for event in pygame.event.get():
@@ -53,6 +52,6 @@ while True:
                 rect1.draw()
                 pygame.display.update()
         if (event.type==pygame.KEYDOWN):
-            if event.key==pygame.K_l:
-                lin.draw()
+            if event.key==pygame.K_p:
+                pygame.draw.polygon(screen, "red", [(300, 100), (200, 300), (400, 300)])
                 pygame.display.update()
