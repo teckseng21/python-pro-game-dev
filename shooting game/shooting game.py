@@ -50,11 +50,11 @@ SPACE=pygame.transform.scale(
     pygame.image.load(os.path.join('Assets', 'background.png')), (WIDTH, HEIGHT)
 )
 
-def draw_window(red,yellow,red_bullets,yellow_bullets,red_heath,yellow_health):
+def draw_window(red,yellow,red_bullets,yellow_bullets,red_health,yellow_health):
     WIN.blit(SPACE, (0, 0))
     pygame.draw.rect(WIN, BLACK, BORDER)
 
-    red_health_text=HEALTH_FONT.render("Health: "+str(red_heath), True , WHITE)
+    red_health_text=HEALTH_FONT.render("Health: "+str(red_health), True , WHITE)
 
     yellow_health_text=HEALTH_FONT.render("Health: "+str(yellow_health), True , WHITE)
 
@@ -200,7 +200,7 @@ def main():
         red_handle_movement(keys_pressed, red)
 
         handle_bullets(yellow_bullets, red_bullets, yellow, red)
-        draw_window(yellow, red, yellow_bullets, red_bullets, yellow_health, red_health)
+        draw_window(red,yellow,red_bullets,yellow_bullets,red_health,yellow_health)
 
 if __name__=="__main__":
     main()
