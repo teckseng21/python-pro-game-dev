@@ -81,7 +81,7 @@ class Bird(pygame.sprite.Sprite):
                 if self.index >= len(self.images):
                     self.index = 0
                 self.image = self.images[self.index]
-                self.image = pygame.transform.rotate(self.images[self.index], self.vel * -2)
+            self.image = pygame.transform.rotate(self.images[self.index], self.vel * -2)
         else:
 
             self.image = pygame.transform.rotate(self.images[self.index], -90)
@@ -170,7 +170,7 @@ while run:
         
         flying = False
 
-    if flying == False and game_over == False:
+    if flying == True and game_over == False:
 
         time_now = pygame.time.get_ticks()
 
