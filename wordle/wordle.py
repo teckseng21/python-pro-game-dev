@@ -43,8 +43,8 @@ def load_words():
             for line in file:
                 word=line.strip().upper()
 
-            if len(word)==5 and word.isalpha():
-                loaded_words.append(word)
+                if len(word)==5 and word.isalpha():
+                    loaded_words.append(word)
 
         if len(loaded_words)==0:
             raise ValueError("No valid five-letter words found.")
@@ -155,7 +155,7 @@ def draw_grid():
             rect=pygame.Rect(x,y,TILE_SIZE,TILE_SIZE)
             pygame.draw.rect(screen,colors[r][c],rect,border_radius=4)
 
-            if grid[r][c]!="":
+            if grid[r][c]=="":
                 pygame.draw.rect(screen,GRAY,rect,2,border_radius=4)
 
             if grid[r][c]!="":
@@ -174,9 +174,9 @@ def draw_game_screen():
     screen.fill(BG)
     draw_text("WORDLE",title_font,WHITE,(WIDTH//2,30))
     draw_grid()
-    draw_text("WORDLE",message_font,WHITE,(WIDTH//2,460))
+    draw_text(message,message_font,WHITE,(WIDTH//2,460))
     draw_keyboard()
-    if game_state=="game_over":
+    if game_state=="gameover":
         draw_button(play_again_button,"PLAY AGAIN",button_font)
 
 def update_key_color(letter,color):
@@ -226,7 +226,7 @@ def check_word():
     current_col=0
 
     if current_row==ROWS:
-        message="The word was: {secret_word}"
+        message=f"The word was: {secret_word}"
         game_state="gameover"
 
     else:
@@ -277,6 +277,7 @@ while running:
 
                 if game_state =="start":
                     if start_button.collidepoint(pos):
+                        init_game()
                         game_state="playing"
 
                 elif game_state=="playing":
