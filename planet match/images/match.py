@@ -40,7 +40,7 @@ for text,pos in right_names:
     t=font.render(text,True,black)
     screen.blit(t,pos)
 
-pygame.display.update
+pygame.display.update()
 
 selected_left=None
 selected_pos=None
@@ -100,7 +100,7 @@ while running:
         pygame.display.update()
         result_screen=True
         while result_screen:
-            result_events=pygame.event.wait
+            result_events=pygame.event.wait()
             if result_events.type==pygame.QUIT:
                 result_screen=False
                 running=False
